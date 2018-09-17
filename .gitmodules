@@ -1,0 +1,4 @@
+[submodule "xaasutility/test"]
+	path = xaasutility/test
+	url = git@github.com:xaasutility/test.git
+	branch = master
