@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="export_success_msg_id" model="ir.ui.view">
+            <field name="name">export.success.msg.wizard.view</field>
+            <field name="model">export.success.msg</field>
+            <field name="arch" type="xml">
+                <form string="success export msg">
+                    <group>
+                        <div style="text-align:center;">
+                            <h3>
+                                <label string="Invoices Exported Successfully!!"/>
+                            </h3>
+                        </div>
+                    </group>
+                    <group>
+                        <div style="text-align:center;">
+                            <button name='ok_msg' string="Ok" type="object" icon="gtk-ok"/>
+                        </div>
+                    </group>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

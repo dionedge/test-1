@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="purchase_export_view" model="ir.ui.view">
+            <field name="name">purchase.import.export.view</field>
+            <field name="model">purchase.import.export</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Order Export">
+                    <sheet>
+                        <field name="company_id" invisible="1"/>
+                        <label for="purchase_order_ids"></label>
+                        <field name="purchase_order_ids" domain="[('xero_exported','=',False), ('company_id','=',company_id)]"/>
+                    </sheet>
+                    <footer>
+                        <button name='export_purchase_order' string="Export Purchase Orders" type="object" icon="gtk-ok"/>
+                        <button name='case_close' string="Close" icon="gtk-close" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_purchase_order_export" model="ir.actions.act_window">
+            <field name="name">Export Purchase Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.import.export</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem id="zero_accounting_parent_id" name="Xero Accounting" parent="account.menu_finance" sequence="3"
+                  groups="account.group_account_manager,account.group_account_invoice"/>
+
+        <record id="account_tax_form_xero_inherit" model="ir.ui.view">
+            <field name="name">account.tax.form.xero.inherit</field>
+            <field name="model">account.tax</field>
+            <field name="inherit_id" ref="account.view_tax_form"/>
+            <field name="arch" type="xml">
+                <field name="description" position="after">
+                    <field name="xero_tax_type"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_invoice_xero_form" model="ir.ui.view">
+            <field name="name">account.invoice.xero.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="fiscal_position_id" position="after">
+                    <newline/>
+                    <field name="xero_exported" invisible="1"/>
+                    <field name="xero_invoice_no"/>
+                </field>
+                <!-- <field name="date_due" groups="base.group_no_one" position="replace">
+                    <field name="date_due" required="1"/>
+                </field> -->
+            </field>
+        </record>
+
+        <record id="view_invoice_xero_tree" model="ir.ui.view">
+            <field name="name">account.invoice.xero.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="after">
+                    <field name="xero_exported"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_invoice_xero_search" model="ir.ui.view">
+            <field name="name">account.invoice.xero.search</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <filter name="late" position="after">
+                    <filter name="not_exported" string="Not Exported" domain="[('xero_exported', '=', False)]"/>
+                </filter>
+                <filter context="{'group_by':'date_due'}" position="after">
+                    <filter string="Exported to Xero" context="{'group_by':'xero_exported'}"/>
+                </filter>
+            </field>
+        </record>
+
+        <act_window id="action_export_xero_invo"
+                    name="Export To XERO"
+                    src_model="account.invoice"
+                    res_model="invoice.wizard"
+                    view_type="form" view_mode="form"
+                    key2="client_action_multi" target="new"/>
+
+    </data>
+</openerp>

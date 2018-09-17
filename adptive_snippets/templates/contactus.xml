@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="contactus_form" name="Contact Form" inherit_id="website.contactus" >
+<xpath expr="//div[@id='wrap']" position="replace">
+ 				<div id="wrap" class="con_backgroung">
+ 				<div class="contact_us_header"><h1>Contact us</h1></div>
+                      <div class="oe_structure"/>
+                      <div class="container contact_us">
+                          
+                          <div class="row ">
+                          	 <div class="col-md-6 mb32 cmp_address ">
+                                 <!--  <t t-call="website.company_description"/> -->
+                                  	<h2 class="footer_header">D1 TRAINING - NASHVILLE</h2>
+                                  	<div class="cmpny_text">At D1, we define “athlete” as anyone dedicated to their sport or their fitness. Have a question or comment? Contact or stop by and visit us. We’d love to talk to you!
+                                  	</div>
+                    				<div class="fot-address">
+                                	<address itemscope="itemscope" itemtype="http://schema.org/Organization">
+                                	<div t-field="res_company.partner_id" t-options='{
+                                        "widget": "contact",
+                                        "fields": ["name", "address", "phone", "mobile", "fax", "email"]}'/>
+                                	</address>
+                        			</div>
+                              </div>
+                              <div class="col-md-6 contact_us_form">
+                                  <div class="oe_structure">
+                                  </div>
+                                  <div class="text-center mt64" name="mail_button">
+                                      <a t-attf-href="mailto:{{ res_company.email }}" class="btn btn-primary" id="o_contact_mail">Send us an email</a>
+                                  </div>
+                              </div>
+                              
+                          </div>
+                      </div>
+                      <div class="oe_structure"/>
+                    </div>
+
+</xpath>
+</template>
+
+
+<template id="contactus_form_view" inherit_id="adptive_snippets.contactus_form"
+              name="Contact Us">
+<xpath expr="//div[@name='mail_button']" position="replace">
+				<div>
+				<div><h2>GET IN TOUCH</h2></div>
+                    <form action="/website_form/" method="post" data-model_name="crm.lead" data-success_page="/contactus-thank-you" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data" data-editable-form="false">
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="control-label" for="contact_name">Name</label>
+                            <div >
+                                <input type="text" class="form-control o_website_form_input" name="contact_name" t-att-value="request.params.get('contact_name', '')" required=""/>
+                            </div>
+                        </div>
+                        <div class="form-group form-field">
+                            <label class=" control-label" for="phone">Phone</label>
+                            <div>
+                                <input type="text" class="form-control o_website_form_input" name="phone" t-att-value="request.params.get('phone', '')" required=""/>
+                            </div>
+                        </div>
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="control-label" for="email_from">Email</label>
+                            <div >
+                                <input type="text" class="form-control o_website_form_input" name="email_from" required="" t-att-value="request.params.get('email_from', '')" />
+                            </div>
+                        </div>
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="control-label" for="partner_name">Your Company</label>
+                            <div >
+                                <input type="text" class="form-control o_website_form_input" name="partner_name" required="" t-att-value="request.params.get('partner_name', '')" />
+                            </div>
+                        </div>
+                        <div class="form-group form-field o_website_form_required">
+                            <label class=" control-label" for="name">Subject</label>
+                            <div>
+                                <input type="text" class="form-control o_website_form_input" name="name" required="" t-att-value="request.params.get('name', '')" />
+                            </div>
+                        </div>
+                        <div class="form-group form-field o_website_form_required_custom">
+                            <label class="control-label" for="description">Question</label>
+                            <div >
+                                <textarea class="form-control o_website_form_input" name="description" required=""><t t-esc="request.params.get('description', '')"/></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                                <span class="btn  btn-lg o_website_form_send">Send</span>
+                                <span id="o_website_form_result"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+</xpath>
+</template>
+
+</odoo>

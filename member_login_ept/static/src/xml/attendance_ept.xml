@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+   
+    <t t-name="PresenceIndicator">
+        <div id="oe_hr_attendance_status_ept" class="fa fa-user">
+        </div>
+    </t>
+	
+	<t t-name="HrAttendanceCompanyScreen">
+		<div class="o_hr_attendance_kiosk_mode_container_ept o_app_switcher_background">
+			<div class="o_hr_attendance_kiosk_mode_ept">
+			<h1>Select Company</h1>
+            	<select id="company_id">
+                </select>
+                <button class='confirm_company btn btn-primary btn-lg design_ept'>Confirm</button>
+			</div>
+		</div>
+	</t>
+	
+    <t t-name="HrAttendanceKioskModeEpt">
+        <div class="o_hr_attendance_kiosk_mode_container_ept o_app_switcher_background">
+            <div class="o_hr_attendance_kiosk_mode_ept">
+                <h1>Welcome to <t t-esc="widget.company_name"/></h1>
+                <img t-attf-src="{{widget.company_image_url}}" alt="Company Logo"/>
+                <button class="o_hr_attendance_button_member btn btn-primary btn-lg design_ept">Select Member</button>
+            </div>
+            <div class="o_hr_attendance_clock_ept"></div>
+        </div>
+    </t>
+
+    <t t-name="HrAttendanceMyMainMenuEpt">
+        <div class="o_hr_attendance_kiosk_mode_container_ept o_app_switcher_background">
+            <div class="o_hr_attendance_kiosk_mode_ept">
+                <t t-if="widget.partner">
+                    <h1>Welcome <t t-esc="widget.partner.name"/></h1>
+                    <t t-if="widget.partner.attendance_state=='checked_out'">
+                        <h2>Click to check in</h2>
+                        <i class="fa fa-sign-in btn-primary o_hr_attendance_sign_in_out_icon_member"/>
+                    </t>
+                    <t t-if="widget.partner.attendance_state=='checked_in'">
+                        <h2>Click to check out</h2>
+                        <i class="fa fa-sign-out btn-primary o_hr_attendance_sign_in_out_icon_member"/>
+                    </t>
+                </t>
+                <t t-if="!widget.partner">
+                    Error : Could not find partner linked to user.
+                </t>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="HrAttendanceKioskConfirmEpt">
+        <div class="o_hr_attendance_kiosk_mode_container_ept o_app_switcher_background">
+            <div class="o_hr_attendance_kiosk_mode_ept">
+            	<t t-if="widget.partner_id">
+                    <h1>Welcome <t t-esc="widget.partner_name"/></h1>
+                   	<t t-if="widget.partner_state=='checked_in'">
+                    	<h2>Check out</h2>
+                        <a class="fa btn-primary o_hr_attendance_sign_in_out_icon_member fa-sign-out fa-sign-in"/>
+                    </t>
+                    <t t-if="widget.partner_state=='checked_out'">
+                    <h2>Check in</h2>
+                    <t t-foreach="result" t-as="a">
+                        <a t-att-data-class-id="a.id" style="width: 45%;margin-right: 2%;margin-left: 2%;float:left;font-size: 10em" class="fa btn-primary o_hr_attendance_sign_in_out_icon_member fa-sign-out fa-sign-out">
+                        	<p style="font-size: 16px;margin: 0 0px 10px 0;text-align: center;font-family: 'Roboto', sans-serif;"><t t-esc="a.name"></t></p>
+                        </a>
+                    </t>
+                    </t>
+                </t>
+                <t t-if="!widget.partner_id">
+                    Error: could not find corresponding partner.<br/>Please return to the main menu.
+                </t>
+                <div class="oe_attendance_sign_in_out">
+                </div>
+                <div class="o_hr_attendance_back_button_member btn btn-danger fa fa-times"/>
+            </div>
+            <div class="o_hr_attendance_clock_ept"></div>
+        </div>
+    </t>
+
+    <t t-name="HrAttendanceGreetingMessageEpt">
+        <div class="o_hr_attendance_message_container o_app_switcher_background">
+            <div class="o_hr_attendance_message">
+                <t t-if="widget.attendance">
+                    <t t-if="widget.attendance.check_out">
+                        <h1 class="o_hr_attendance_validation">
+                            Checked out at <t t-esc="widget.attendance.check_out_time"/>
+                        </h1>
+                        <h2 class="o_hr_attendance_message_message_member">
+                            Goodbye <t t-esc="widget.partner_name"/>
+                            <br/>
+                        </h2>
+                        <h3 class="o_hr_attendance_random_message_member"></h3>
+                        <h2 class="o_hr_attendance_warning_message_member"></h2>
+
+                    </t>
+                    <t t-if="!widget.attendance.check_out">
+                        <h1 class="o_hr_attendance_validation">
+                            Checked in at <t t-esc="widget.attendance.check_in_time"/>
+                        </h1>
+                        <h2 class="o_hr_attendance_message_message_member">
+                            Welcome <t t-esc="widget.partner_name"/>
+                            <br/>
+                            to <t t-esc="widget.company_name"/>
+                            <br/>
+                        </h2>
+                        <h3 class="o_hr_attendance_random_message_member"></h3>
+                        <h2 class="o_hr_attendance_warning_message_member"></h2>
+                    </t>
+                </t>
+                <t t-if="!widget.attendance">
+                    Invalid request, please return to the main menu.<br/>
+                </t>
+                <button class="o_hr_attendance_button_dismiss_ept btn btn-primary btn-sm design_ept">ok</button>
+            </div>
+        </div>
+    </t>
+
+</template>

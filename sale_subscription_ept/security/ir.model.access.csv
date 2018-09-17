@@ -1,0 +1,2 @@
+id,name,model_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_kaijin_agreement,kaijin.agreement,sale_subscription_ept.model_kaijin_agreement,True,True,True,True

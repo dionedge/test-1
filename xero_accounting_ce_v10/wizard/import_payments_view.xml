@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="wiz_import_payments_form" model="ir.ui.view">
+            <field name="name">wiz.import.payments.form</field>
+            <field name="model">wiz.import.payments</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Import Payment" version="7.0">
+                    <p>
+                        <h3>
+                            Click on Import to start importing payments.
+                        </h3>
+                    </p>
+                    <footer>
+                        <button name="import_payments" type="object" string="Import" icon="gtk-ok"/>
+                        <button name="case_close" type="object" string="Close" icon="gtk-close"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_wiz_import_payments" model="ir.actions.act_window">
+            <field name="name">Import Payments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wiz.import.payments</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</openerp>

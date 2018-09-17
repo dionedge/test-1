@@ -1,0 +1,41 @@
+<odoo>
+<template id="footer_default" name="Footer" inherit_id="theme_watch.footer_default">
+<xpath expr="//div[@id='footer']" position="replace">
+	<div >
+            <div class="middle_footer col-md-12">
+                <div class="container">
+                    <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-7 col-xs-12 footer_align" id="info">
+                    	<img src="/adptive_snippets/static/src/img/footer-logo.png" alt="D1 Sports"/>
+                    	<section class="f-social">
+                            <ul>
+                                <li t-if="website.social_facebook"><a t-att-href="website.social_facebook" t-if="website.social_facebook"><i class="fa fa-facebook"/></a></li>
+                                <li t-if="website.social_twitter"><a t-att-href="website.social_twitter" t-if="website.social_twitter"><i class="fa fa-twitter"/></a></li>
+                                <li t-if="website.social_googleplus"><a t-att-href="website.social_googleplus" t-if="website.social_googleplus" rel="publisher"><i class="fa fa-google-plus"/></a></li>
+                                <li t-if="website.social_youtube"><a t-att-href="website.social_youtube" t-if="website.social_youtube"><i class="fa fa-youtube-play"/></a></li>
+                            </ul>
+                        </section>
+                    </div>
+				<ul class="list-unstyled" id="products"></ul>
+	            <div class="col-lg-4 col-md-4 col-sm-7 col-xs-12" id="info">
+                    	<h2 class="footer_header">D1 TRAINING - NASHVILLE</h2>
+                    	<div class="fot-address">
+                                <address itemscope="itemscope" itemtype="http://schema.org/Organization">
+                                <!-- TODO widget contact must add itemprop attributes -->
+                                <div t-field="res_company.partner_id" t-options='{
+                                        "widget": "contact",
+                                        "fields": ["name", "address", "phone", "mobile", "fax", "email"]}'/>
+                                </address>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-7 col-xs-12" id="info">
+                    	<img class="footer-badge" src="/adptive_snippets/static/src/img/D1-badge-01.png"/><br/>
+						<img class="footer-badge" src="/adptive_snippets/static/src/img/D1-badge-02.png"/>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</xpath>
+</template>
+</odoo>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="invoice_customer_wizard_view" model="ir.ui.view">
+            <field name="name">invoice.customer.wizard.view</field>
+            <field name="model">invoice.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Account Invoice" version="7.0">
+                    <sheet>
+                        <field name="company_id" invisible="1"/>
+                        <label for="invoice_ids"></label>
+                        <field name="invoice_ids"
+                               domain="[('xero_exported','=',False),('state','in',['open']),('company_id','=',company_id), ('type', '=', 'out_invoice')]"/>
+                    </sheet>
+                    <footer>
+                        <button name='validate_wizard' string="Export Customer Invoices" type="object" icon="fa-check"/>
+                        <button name='case_close' string="Close" icon="fa-close" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="invoice_vendor_wizard_view" model="ir.ui.view">
+            <field name="name">invoice.vendor.wizard.view</field>
+            <field name="model">invoice.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Account Invoice" version="7.0">
+                    <sheet>
+                        <field name="company_id" invisible="1"/>
+                        <label for="invoice_ids"></label>
+                        <field name="invoice_ids"
+                               domain="[('xero_exported','=',False),('state','in',['open']),('company_id','=',company_id), ('type', '=', 'in_invoice')]"/>
+                    </sheet>
+                    <footer>
+                        <button name='validate_wizard' string="Export Vendor Invoices" type="object" icon="gtk-ok"/>
+                        <button name='case_close' string="Close" icon="gtk-close" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="wizard_customer_invoice_view" model="ir.actions.act_window">
+            <field name="name">Xero Accounting</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">invoice.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="invoice_customer_wizard_view"/>
+            <field name="target">new</field>
+        </record>
+        <record id="wizard_vendor_invoice_view" model="ir.actions.act_window">
+            <field name="name">Xero Accounting</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">invoice.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="invoice_vendor_wizard_view"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

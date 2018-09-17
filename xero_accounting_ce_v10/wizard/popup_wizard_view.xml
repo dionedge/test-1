@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="popup_partner_dialog_view" model="ir.ui.view">
+            <field name="name">validate.wizard.view</field>
+            <field name="model">validate.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Contact Import Confirmation">
+                    <p>
+                        <h3>
+                            We Found Some New Contact In Odoo,
+                            <br/>
+                            <br/>
+                            <field name="message" readonly="1"/>
+                            <br/>
+                            <br/>
+                            Do you want to Export this on XERO
+                        </h3>
+                    </p>
+                    <footer>
+                        <button name='confirm_contact' string="Continue" type="object" icon="gtk-ok"/>
+                        <button name='cancel_contact' string="Cancel" icon="gtk-close" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

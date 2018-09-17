@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>		
+
+		<record id="view_member_attendance_report_search" model="ir.ui.view">
+            <field name="name">member.attendance.report.ept.search</field>
+            <field name="model">member.attandance.report.ept</field>
+            <field name="arch" type="xml">
+                <search string="Member Attendance">
+                    <group expand="0" string="Group By">
+                        <filter string="Class" domain="" context="{'group_by':'class_id'}"/>
+                        <filter string="Month" domain="" context="{'group_by':'attendance_month'}"/>
+                        <filter string="Week" domain="" context="{'group_by':'attendance_week'}"/>
+                        
+                        
+                    </group>
+                </search>
+            </field>
+        </record>
+
+		<record id="member_attandance_report_ept_tree_view" model="ir.ui.view">
+            <field name="name">member.attandance.report.ept.tree.view</field>
+            <field name="model">member.attandance.report.ept</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Member Attandance Statistics" create="false">
+                    <field name="class_id"/>
+                    <field name="member_attendance_hours" widget='float_time'/>
+                <!--     <field name="total_members"/> -->
+                    <field name="class_member_avg_attendance_hours" widget='float_time'/>
+                    <!-- <field name = "class_member_total_attendance_hours"/> -->
+                    <field name = "attendance_week"/>
+                    <field name = "attendance_month"/>
+                    
+                   <!--  <field name="check_in_time"/>
+                    <field name="check_out_time"/>
+                    <field name="worked_hours"/> -->
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_member_attandance_report_ept" model="ir.actions.act_window">
+	        <field name="name">Member Attandance Analysis</field>
+	        <field name="res_model">member.attandance.report.ept</field>
+	        <field name="view_type">form</field>
+	      	<field name="view_mode">tree</field>
+	      	<field name="view_id" ref="member_attandance_report_ept_tree_view"/>	        
+	    </record>
+        
+        <menuitem 
+        	id="menu_member_attandance_analysis"  
+        	sequence="17" 
+        	action="action_member_attandance_report_ept"
+        	parent="member_login_ept.menu_attandance_dashboard"
+        	name="Member Attandance Report"/>
+        	
+<!--         	groups="base.group_portal
+ -->        <!-- <menuitem 
+        	action="action_instructor_attandance_report_ept" 
+        	id="instructor_attandance_analysis_menu" 
+        	parent="hr_attendance.menu_hr_attendance_report" 
+        	sequence="32" 
+        	string="Instructor Attandance Report"/> -->
+	
+	</data>
+
+</odoo>

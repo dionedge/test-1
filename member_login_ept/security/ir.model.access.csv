@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_member_login_ept,partner.member.login.ept,model_member_login_ept,group_member_login,1,1,1,1
+access_timesheet_ept,partner.timesheet.ept,model_timesheet_ept,hr_attendance.group_hr_attendance_manager,1,1,1,1
+access_classes_ept,partner.classes.ept,model_classes_ept,hr_attendance.group_hr_attendance_manager,1,1,1,1
+access_class_scheduler,partner.class.scheduler,model_class_scheduler,hr_attendance.group_hr_attendance_manager,1,1,1,1
+access_class_report,access.class.report,model_class_attandance_report_ept,hr_attendance.group_hr_attendance_manager,1,1,1,1
+access_instructor_sign_in_report,access.instructor.report,model_instructor_attandance_report_ept,hr_attendance.group_hr_attendance_manager,1,1,1,1
+access_member_attendance_report,Access.member.attendance.report,model_member_attandance_report_ept,base.group_portal,1,0,0,0

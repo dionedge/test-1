@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		
+		<!-- Purchase Export -->
+		<!-- <record id="action_export_po_to_xero" model="ir.actions.server">
+			<field name="name">Export To XERO</field>
+			<field name="model_id" ref="purchase.model_purchase_order" />
+			<field name="state">code</field>
+			<field name="code">
+				self.action_export_purchase_order_to_xero(cr,uid,context.get('active_ids'))
+			</field>
+		</record>
+		
+		<record model="ir.values" id="values_action_export_po_to_xero">
+			<field name="name">Export To XERO</field>
+			<field name="model" eval="'purchase.order'" />
+			<field name="key">action</field>
+			<field name="key2">client_action_multi</field>
+			<field name="value" eval="'ir.actions.server,%d'%action_export_po_to_xero" />
+		</record> -->
+		
+	</data>
+</openerp>

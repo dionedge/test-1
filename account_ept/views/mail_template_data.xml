@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+ 
+		<record id="freeze_membership_template" model="mail.template">
+			<field name="name">Freeze Membership mail template </field>
+			<field name="model_id" ref="account.model_account_invoice"/>       
+			<field name="email_to" >${object.email_to |safe}</field>  
+			<field name="subject">Freeze Membership </field>
+			<field name="body_html" type="xml">
+				<div style="margin:auto;width:100%;">
+			    	<br/>
+			        <p>${object.partner_id.name} wants to freeze membership.</p>
+			    </div>
+			</field>
+		</record> 
+       
+	</data>
+</odoo>

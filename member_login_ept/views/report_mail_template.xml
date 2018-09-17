@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<data noupdate="1">
+    <!--  Mail Templates for product submit and approve notification -->
+    <!--Email template for product submited notification--> 
+        <record id="product_submit_notification" model="email.template">
+            <field name="name">Product Submit Notification Template</field>
+            <field name="email_from">${(user.email or '')|safe}</field>
+            <field name="subject">Product ${object.product_id.name}'s version ${object.name} is Submitted</field>
+	   		 <field name="partner_to">${object.product_id.product_manager.partner_id.id}</field>
+            <field name="model_id" ref="product_extend_ept.model_product_development"/>
+	   		 <field name="auto_delete" eval="False"/>
+            <field name="body_html">
+             <![CDATA[
+             	 Hello ${object.product_id.product_manager.name},<br/>  <br />           
+             Product ${object.product_id.name}'s version ${object.name} is Submitted.<br/><br/>
+             kindly look into this matter.   
+      		 ]]>
+           </field>
+            <field name="lang"></field>
+        </record> 
+   </data>
+  </odoo>
+ 

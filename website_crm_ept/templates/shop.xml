@@ -1,0 +1,25 @@
+<odoo>
+<template id="layout" name="Header" inherit_id="website_sale.cart">
+<xpath expr="//div[@id='wrap']//div[hasclass('clearfix')]" position="after">
+<t t-set="is_service" t-value="website.is_service()"/> 
+<t t-if="is_service">
+<div class="t_and_c">
+	<div class="t_and_c_ input">
+		<t t-call="portal.portal_signature">
+	                          <t t-set="object" t-value="website.sale_get_order()"/>
+	                          <t t-set="partner_name" t-value="object.partner_id.name"/> 
+	                          <t t-set="callUrl" t-value="'/my/signature/accept'" /> 
+	                          <t t-set="accessToken" t-value="object.access_token"/>
+	    </t>
+	</div>
+</div>
+</t>
+</xpath>
+<xpath expr="//div[@id='wrap']//a[@href='/shop/checkout']" position="attributes">
+	<attribute name="id">checkout_link</attribute>
+</xpath>
+
+</template>
+
+
+</odoo>

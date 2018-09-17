@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="website_shop">
+<t t-call="website.layout">
+<div>
+	<div class="col-md-12 shop_header">
+		<div>
+			<img src="/adptive_snippets/static/src/img/logo-alternate.png" alt="D1 Sports"/>
+		</div>
+	</div>
+	<div class="col-md-12 now_notification">
+		<div>
+			<h2 class="section_title">
+     			 Coming Soon
+      		<div class="border"></div>
+    		</h2>
+    	</div>
+		<div class="col-md-6">
+			<a href="#"><img src="/adptive_snippets/static/src/img/Coming_Soon_1024x1024.jpg" alt="D1 Sports"/></a>
+		</div>
+		<div class="col-md-6">
+			<h2><a>New Products Are Almost Here!</a></h2>
+			<div><p class="new_product_price">0.00$</p></div>
+			<br/>
+			<div><p>New products are coming soon but check in the SALE section for D1 Deals.</p></div>
+			<div><p><a><span id="AddToCartText" class="cart-text">Sold Out</span></a></p></div>
+		</div>
+	</div>
+</div>
+<div class="men_section">
+
+	<div class="col-md-12">
+		<div>
+			<h2 class="section_title">
+     			 MEN'S
+      		<div class="border"></div>
+    		</h2>
+    	</div>
+    </div>
+	<div class="col-md-12">
+		<div class="btn_top">
+			<div class="btn">
+			<a href="#">VIEW ALL</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+</t>
+</template>
+</odoo>

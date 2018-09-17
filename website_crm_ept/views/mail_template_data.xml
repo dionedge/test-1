@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+    	<record id="invitation_mail_template" model="mail.template">
+        <field name="name">Invitation mail</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>       
+        <field name="email_to" >${object.email_from |safe}</field>  
+        <field name="subject">Thank you for your interest in D1 Nashville!</field>
+        <field name="body_html" type="xml">
+                <div style="margin:auto;width:100%;">
+                	 <br/><br/>
+                	 <p>Kindly fill the Waiver Form</p>
+                	 <center>
+                        <a href='${object.url}' target="_blank" style="background-color: #b953dc; padding: 20px; text-decoration: none; color: #fff; border-radius: 5px; font-size: 16px;" class="o_default_snippet_text">Waiver Form</a><br/><br/><br/>                        
+                    </center>
+                    <p><strong>Only one time you can use This link</strong></p>
+                    <br/><br/>
+                    <p>Best regards,</p>               
+                </div>
+                </field>
+        </record> 
+        
+        <record id="otp_mail_template" model="mail.template">
+        <field name="name">otp mail template </field>
+        <field name="model_id" ref="website_crm_ept.model_kaijin_waiver_otp"/>       
+        <field name="email_to" >${object.email_to |safe}</field>  
+        <field name="subject">One Time Password </field>
+        <field name="body_html" type="xml">
+                <div style="margin:auto;width:100%;">
+                	 <br/>
+                	 <p>Your Otp is : <b>${object.otp}</b></p>
+                     <br/>
+                     <p>** This otp is valid for 2 minutes only **</p>            
+                </div>
+                </field>
+        </record> 
+        
+    </data>
+    </odoo>

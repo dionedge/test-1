@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<act_window id="action_xero_partner_upadate" res_model="partner.update.detail.xero"
+			src_model="res.partner" target="new" multi="True" key2="client_action_multi"
+			view_mode="form" name="Xero Partner Detail Update" context="{'default_state': 'option'}" />
+
+		<record model='ir.ui.view' id='partner_detail_update_xero'>
+			<field name='name'>partner.update.detail.xero.form</field>
+			<field name='model'>partner.update.detail.xero</field>
+			<field name='arch' type='xml'>
+				<form string='Automatic Merge Wizard'>
+					<sheet>
+						<group col="1">
+							<div align="center"><button name="update_partner_detail" string="Update Partner Details In Xero"
+								class="oe_highlight" type="object" /></div>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+	</data>
+</openerp>

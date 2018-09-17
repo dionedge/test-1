@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="view_order_form_ysi" model="ir.ui.view">
+			<field name="name">view.order.default.code.ysi</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form" />
+			<field name="arch" type="xml">
+				<xpath expr="/form/header/button[@name ='action_done']"	position="after">
+					<button type ="object" name="add_suffix_ysi_vendors" invisible="1" string="Set Default Code YSI Vendors" />
+				</xpath>
+			</field>
+		</record>
+        <!-- <record id="view_sales_config_inherit_ysi" model="ir.ui.view">
+            <field name="name">sale settings inherit ysi</field>
+            <field name="model">sale.config.settings</field>
+            <field name="inherit_id" ref="base_setup.view_sale_config_settings"/>
+            <field name="arch" type="xml">
+            <xpath expr="/form/header/button[@name ='Cancel']"	position="after">
+            <button type ="object" name="add_suffix_ysi_vendors"  string="Set Default Code YSI Vendors" />
+            </xpath>
+            </field>
+        </record> -->
+	</data>
+</openerp>
