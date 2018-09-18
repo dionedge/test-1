@@ -1,3 +1,0 @@
-id,name,model_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_kaijin_waiver,kaijin.waiver,website_crm_ept.model_kaijin_waiver,True,True,True,True
-access_kaijin_waiver_otp,kaijin.waiver.otp,website_crm_ept.model_kaijin_waiver_otp,TRUE,TRUE,TRUE,TRUE

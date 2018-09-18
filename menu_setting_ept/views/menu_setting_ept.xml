@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-	
-	<record id="admin_hidden_menu_ept" model="res.groups"> 
- 		<field name="name">Base Menu Hide</field> 
- 	</record>
- 
-</odoo>
